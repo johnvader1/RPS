@@ -1,0 +1,64 @@
+import random
+Choices = ["Rock", "Paper", "Scissors"]
+Weak = ["Paper", "Scissors", "Rock"]
+PlayerName = input("What is your name?\n")
+PlayerName.title()
+CPUwins = 0
+PlayerWins = 0
+
+def Game():
+    Choices = ["Rock", "Paper", "Scissors"]
+    PlayerChoice = ["Rock"]
+    CPUwins = 0
+    PlayerWins = 0
+    X = 0
+    while CPUwins < 5 and PlayerWins < 5:
+        P = len(PlayerChoice)-1
+        CPU = PlayerChoice[random.randint(X,P)]
+        if P > 5:
+            X = len(PlayerChoice)-4
+        Player = input("Pick Rock, Paper, or Scissors\n")
+        Player = Player.title()
+        if Player[0] == CPU[0]:
+            print("It was a tie both players picked\n", CPU)
+            print(PlayerName, ":", PlayerWins, "|| CPU :", CPUwins)
+            if Player[0] == "R":
+                PlayerChoice.append("Paper")
+            elif Player[0] == "S":
+                PlayerChoice.append("Rock")
+            else:
+                PlayerChoice.append("Scissors")
+        elif (Player[0] == "R" and CPU[0] == "S") or (Player[0] == "S" and CPU[0] == "P") or (Player[0] == "P" and CPU[0] == "R"):
+            print("You win, CPU picked", CPU)
+            PlayerWins += 1
+            print(PlayerName, ":", PlayerWins, "|| CPU :", CPUwins)
+            if Player[0] == "R":
+                PlayerChoice.append("Paper")
+            elif Player[0] == "S":
+                PlayerChoice.append("Rock")
+            else:
+                PlayerChoice.append("Scissors")
+        else:
+            print("You lose, CPU picked", CPU)
+            CPUwins += 1
+            print(PlayerName, ":", PlayerWins, "|| CPU :", CPUwins)
+            if Player[0] == "R":
+                PlayerChoice.append("Paper")
+            elif Player[0] == "S":
+                PlayerChoice.append("Rock")
+            else:
+                PlayerChoice.append("Scissors")
+    if CPUwins == 5:
+        Player = input("You lost play again? ")
+        Player.title()
+        if Player == "Yes":
+            Game()
+    else:
+        Player = input("You won play again?/n")
+        Player.title()
+        if Player == "Yes":
+            Game()
+    print (PlayerChoice)
+        
+Game()
+
